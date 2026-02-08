@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  # Angular application
+  angular-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: finza-portfolio
+    image: internal/portofolio-web:v1
+    ports:
+      - '3040:3040'
+    restart: unless-stopped
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: micro__services_network
+    external: true
