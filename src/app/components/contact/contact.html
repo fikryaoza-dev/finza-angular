@@ -1,0 +1,85 @@
+<section id="contact" class="py-24 bg-base-200">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <div class="space-y-6">
+        <h2 class="text-5xl font-extrabold tracking-tight">
+          Let's <span class="text-primary italic">Connect.</span>
+        </h2>
+        <p class="text-lg opacity-70 max-w-md">
+          I'm currently available for freelance work or full-time positions. If you have a project
+          in mind, let's chat.
+        </p>
+
+        <div class="space-y-4 pt-6">
+          <div class="flex items-center gap-4">
+            <div
+              class="w-12 h-12 rounded-full bg-base-100 flex items-center justify-center border border-white/10"
+            >
+              <span class="text-secondary">✉</span>
+            </div>
+            <div>
+              <p class="text-sm opacity-50">Email</p>
+              <p class="font-mono">hello@yourname.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-base-100 shadow-2xl border border-white/5 p-8">
+        <form class="space-y-4">
+          <div class="form-control w-full">
+            <label class="label"><span class="label-text font-semibold">Full Name</span></label>
+            <input
+              type="text"
+              placeholder="John Doe"
+              class="input input-bordered focus:border-primary transition-all bg-base-200"
+            />
+          </div>
+
+          <div class="form-control w-full">
+            <label class="label"><span class="label-text font-semibold">Email Address</span></label>
+            <input
+              type="email"
+              [(ngModel)]="email"
+              name="email"
+              placeholder="name@email.com"
+              class="input input-bordered transition-all bg-base-200"
+              [class.input-error]="email().length > 0 && !isEmailValid()"
+            />
+          </div>
+
+          <div class="form-control w-full">
+            <label class="label"><span class="label-text font-semibold">Your Message</span></label>
+            <textarea
+              [(ngModel)]="message"
+              name="message"
+              class="textarea textarea-bordered h-40 bg-base-200"
+              placeholder="Tell me about your vision..."
+            ></textarea>
+          </div>
+
+          <button
+            type="button"
+            (click)="sendEmail()"
+            [disabled]="!isFormValid()"
+            class="btn btn-primary btn-block text-lg shadow-lg shadow-primary/20"
+          >
+            @if (status() === 'sending') {
+              <span class="loading loading-spinner"></span>
+            } @else {
+              Send Message
+            }
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+@if (showToast()) {
+  <div class="toast toast-end">
+    <div class="alert alert-success shadow-lg border border-white/10">
+      <span class="font-bold">✓ Message sent successfully!</span>
+    </div>
+  </div>
+}

@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+@plugin "daisyui";
+
+/* Set Dracula as the primary theme */
+@plugin "daisyui" {
+  themes: dracula, light;
+}
+
+:root {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  @apply bg-base-300 text-base-content;
+}
