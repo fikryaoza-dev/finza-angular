@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: finza-portfolio
-    image: internal/portofolio-web:v1
+    image: internal/finza-portofolio-web:v1
     ports:
       - '3040:3040'
     restart: unless-stopped
